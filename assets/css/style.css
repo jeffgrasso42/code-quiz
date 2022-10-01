@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+.hide {
+  display: none;
+}
+
+header {
+  text-align: center;
+  background-color: aqua;
+}
+
+main {
+  max-width: 1000px;
+  border: 1px solid black;
+  margin: 0 auto;
+  display: flex;
+}
+
+.start,
+.quiz,
+.end {
+  border: 2px solid green;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+}
+
+.start {
+  /* flex-direction: column; */
+  align-items: center;
+  padding: 10px;
+}
+
+.start button {
+  width: fit-content;
+}
+
+.quiz {
+  width: 100%;
+  align-items: center;
+}
