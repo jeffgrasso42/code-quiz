@@ -1,8 +1,8 @@
 var questions = [
   {
-    text: "question 1",
-    choices: ["a", "b", "c", "d"],
-    correct: "a"
+    text: "Inside which HTML element do we put the JavaScript?",
+    choices: ["A) &lt;js&gt;", "B) &lt;scripting&gt;", "C) &lt;script&gt;", "D) &lt;javascript&gt;"],
+    correct: "C) <script>"
   },
   {
     text: "question 2",
