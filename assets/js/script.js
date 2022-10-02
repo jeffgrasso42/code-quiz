@@ -3,7 +3,7 @@ Dependencies
   questions.js
 */
 
-// Variable Declarations
+// Global Variables
 
 var timerBoxEl = document.querySelector(".timer-box");
 var timerEl = document.getElementById("timer");
@@ -11,8 +11,7 @@ var buttonEl = document.getElementById("start-button");
 var quizSectionEl = document.querySelector(".quiz");
 var buttonBoxEl = document.querySelector('.button-box');
 var qIndex = 0;
-var choiceAEl, choiceBEl, choiceCEl, choiceDEl;
-var buttonBox = document.querySelector(".button-box");
+var timerInterval;
 var secondsLeft = 61;
 
 // begins multiple choice quiz
@@ -50,37 +49,41 @@ function displayElement(e) {
 function buildQuestion (qIndex) {
   // check if qIndex is within the range of the questions array
   if (qIndex < questions.length) {
-    buttonBoxEl.innerHTML = ''
-    var currentQuestion = questions[qIndex];
-    // Display the question
+    // check if a question is currently being displayed
+    if (buttonBoxEl.innerHTML !== '')
+      buttonBoxEl.innerHTML = '' // clear previous question
+
+    // Display the current question
     document.getElementById("question-text").innerHTML = questions[qIndex].text;
     
-    // Create buttons for multiple choice options
-    currentQuestion.choices.forEach(function (choice) {
+    // Create buttons with multiple choice options
+    questions[qIndex].choices.forEach(function (choice) {
       buttonBoxEl.innerHTML += `<button>${choice}</button>`
     })
   } else {
+    stop();
     showResults();
   }
 }
 
-// // display results of multiple choice quiz
-// function showResults() {
-//   hideElement(quizSectionEl); //remove display of quiz section
-//   displayElement(document.querySelector(".results")); // display results section 
-// }
+// display results of multiple choice quiz
+function showResults() {
+  hideElement(quizSectionEl); //remove display of quiz section
+  displayElement(document.querySelector(".results")); // display results section 
+}
 
+// starts the timer for the quiz
 function startTimer () {
-  console.log(timerBoxEl);
-  
-  timerBoxEl.classList.remove("invisible")
+  timerBoxEl.classList.remove("invisible") //makes timer visible
 
-  var timerInterval = setInterval(function() {
+  // countown clock with 1 second interval
+  timerInterval = setInterval(function() {
     secondsLeft--;
-    timerEl.innerHTML = secondsLeft;
+    timerEl.innerHTML = secondsLeft; //displays time remaining
 
     if(secondsLeft === 0) {
-      clearInterval(timerInterval);
+      stop();      
+      showResults();
     }
   }, 1000)
 }
@@ -102,6 +105,11 @@ function checkAnswer (event) {
   buildQuestion(qIndex);
 }
 
+// stops quiz timer
+function stop() {
+  clearInterval(timerInterval);
+}
+
 // even listeners
 buttonEl.addEventListener("click", startQuiz);
-buttonBox.addEventListener("click", checkAnswer);
+buttonBoxEl.addEventListener("click", checkAnswer);
