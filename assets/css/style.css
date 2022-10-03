@@ -61,21 +61,15 @@ main {
   display: flex;
 }
 
-.start,
-.quiz,
-.end {
+section {
+  display: flex;
+  flex-direction: column;
   min-height: 40vh;
   border-radius: 8px;
   box-shadow: 0 0 8px var(--light-grey);
 }
 
-section {
-  display: flex;
-  flex-direction: column;
-}
-
 .start {
-  /* flex-direction: column; */
   align-items: center;
   padding: 10px;
 }
@@ -88,13 +82,25 @@ section {
 
 .start button {
   width: fit-content;
-  background-image: linear-gradient(to left, var(--blue-grey) 10%,  var(--opaque-blue-grey));
-  color: white;
   padding: 5px 10px;
-  border-radius: 5px 10px;
   margin: auto 0;
 }
 
+button {
+  font-size: 1.25rem;
+  line-height: 1.3rem;
+  border: 2px solid;
+  border-radius: 5px 10px;
+  background-image: linear-gradient(to left, var(--blue-grey) 10%,  var(--opaque-blue-grey));
+  color: var(--white);
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  box-shadow: inset 0 0 5px var(--grey), 0 0 10px var(--grey);
+  cursor: pointer;
+  font-size: 1.3rem;
+}
 .quiz {
   width: 100%;
   align-items: center;
@@ -120,42 +126,37 @@ h3 {
   margin-top: 30px;
 }
 
-.start button {
-  width: fit-content;
-  background-image: linear-gradient(to left, var(--blue-grey) 10%,  var(--opaque-blue-grey));
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px 10px;
-  margin: auto 0;
-}
-
-button {
-  font-size: 1.25rem;
-  line-height: 1.3rem;
-  border: 2px solid;
-}
-
-button:hover {
-  box-shadow: inset 0 0 5px var(--grey), 0 0 10px var(--grey);
-  cursor: pointer;
-  font-size: 1.3rem;
-}
-
 .button-box button {
   margin: 10px 0;
   width: 90%;
   height: 3rem;
-  background-image: linear-gradient(to left, var(--blue-grey) 10%,  var(--opaque-blue-grey));
-  color: var(--white);
-  
   text-align: start;
   padding: 5px 30px;
-  border-radius: 5px 10px;
-  
-  transition: all 0.3s ease-in-out;
 }
 
+.results {
+  width: 100%;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-image: linear-gradient(to left, var(--blue-grey), var(--blue-grey) 80%, var(--opaque-blue-grey));
+  color: var(--white);
+}
 
+h4 {
+  font-size: 2rem;
+}
 
+form {
+  font-size: 2rem;
+  
+}
 
-
+input {
+  text-align: center;
+  border: 1px inset var(--white);
+  width: 3vw;
+  font-size: 1.5rem;
+  border-radius: 5px;
+}
