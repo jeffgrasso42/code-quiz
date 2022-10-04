@@ -10,13 +10,13 @@
 <body>
   <header>
     <h1>JavaScript Coding Quiz</h1>
-    <div class="timer-box invisible">
+    <div id="timer-box" class="invisible">
       <h2>Time Left:</h2>
       <p id="timer">60</p>
     </div>
   </header>
   <main>
-    <section class="start">
+    <section id="start-section" class="start">
       <h3>Welcome to the Beginner JavaScript Coding Quiz</h3>
       <ul>
         <li>
@@ -30,11 +30,11 @@
       </ul>
       <button id="start-button">Start</button>
     </section>
-    <section class="quiz hide">
+    <section id="quiz-section" class="quiz hide">
       <h3 id="question-text"></h3>
       <div class="button-box" data-message=""></div>
     </section>
-    <section class="results hide">
+    <section id="results-section" class="results hide">
       <div class="user-score">
         <h4>Your Score: <span id="score">0</span></h4>
         <form id="initials-form" method="post">
@@ -42,16 +42,13 @@
           <input type="text" placeholder="JS" name="initials-text" id="initials-text">
         </form>
       </div>
-      <div class="scores hide">
-        <div class="submit-message">
-          <h4>Score Submitted</h4>
-          <button>See Scores</button>
-        </div>
-        <div class="scoreboard">
-          <ul id="scores-list"></ul>
-        </div>
+      <div class="submit-message hide">
+        <h4>Score Submitted</h4>
+        <button id="display-button">Display Scores</button>
       </div>
-
+      <div class="scoreboard hide">
+        <ul id="scores-list"></ul>
+      </div>
     </section>
   </main>
   <footer>

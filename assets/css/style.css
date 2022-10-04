@@ -30,7 +30,7 @@ header {
   color: var(--white);
 }
 
-.timer-box {
+#timer-box {
   display: flex;
   align-items: center;
 }
@@ -39,12 +39,12 @@ header {
   visibility: hidden;
 }
 
-.timer-box h2 {
+#timer-box h2 {
   font-size: 1rem;
   padding: 0 10px;
 }
 
-.timer-box p {
+#timer-box p {
   font-size: 1.75rem;
   height: 2.5rem;
   width: 2.5rem;
@@ -177,4 +177,8 @@ input {
   width: 3vw;
   font-size: 1.5rem;
   border-radius: 5px;
+}
+
+#display-button {
+  padding: 5px 10px;
 }

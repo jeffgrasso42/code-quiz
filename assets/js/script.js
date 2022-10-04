@@ -1,27 +1,27 @@
-/*
-Dependencies
-  questions.js
-*/
+// DEPENDENCIES
+// qustions.js
 
 // Assignment Code
 
-var timerBoxEl = document.querySelector('.timer-box');
+var timerBoxEl = document.getElementById('timer-box');
 var timerEl = document.getElementById('timer');
 var buttonEl = document.getElementById('start-button');
-var quizSectionEl = document.querySelector('.quiz');
+var quizSectionEl = document.getElementById('quiz-section');
 var buttonBoxEl = document.querySelector('.button-box');
+var userScoreBoxEl = document.getElementById('user-score');
 var userScoreEl = document.getElementById('score');
+var initialsFormEl = document.getElementById('initials-form');
+var initialsInputEl = document.getElementById('initials-text');
+var resultsSectionEl = document.getElementById('results-section');
+var displayScoresButtonEl = document.getElementById('display-button');
+var scoresListEl = document.getElementById('scores-list');
 var qIndex = 0;
 var timerInterval;
 var secondsLeft = 61;
 var userScore = 0;
-var initialsFormEl = document.getElementById('initials-form');
-var initialsInputEl = document.getElementById('initials-text');
-
 
 // DATA
 var scoresArray = [];
-
 
 // FUNCTIONS
 /**
@@ -73,7 +73,7 @@ function stop() {
 // display results of multiple choice quiz
 function showResults() {
   hideElement(quizSectionEl); //remove display of quiz section
-  displayElement(document.querySelector(".results")); // display results section 
+  displayElement(resultsSectionEl); // display results section 
   renderScore();
 }
 
@@ -81,6 +81,14 @@ function renderScore() {
   userScoreEl.innerHTML = userScore;
 }
 
+function scoreSubmitMessage() {
+  hideElement(resultsSectionEl.children[0]);
+  displayElement(resultsSectionEl.children[1]);
+}
+
+function getScores() {
+  return JSON.parse(localStorage.getItem("scores"));
+}
 // USER INTERACTIONS
 /**
  * Adds class with 'display: none;' to e.
@@ -107,8 +115,6 @@ function displayElement(element) {
  */
 function checkAnswer (e) {
   var answerClicked = e.target.innerText;
-  console.log(answerClicked);
-  console.log(questions[qIndex].correct);
   // check if answer is correct
   if(answerClicked === questions[qIndex].correct) {
     userScore++
@@ -128,31 +134,54 @@ function checkAnswer (e) {
   buildQuestion(qIndex);
 }
 
-// function save user intials and score to local storage
+/**
+ * Constructs a JS object array from JSON string
+ * 
+ * @returns array of JS objects
+ */
+
+/**
+ * Saves score and the user input user initials
+ * 
+ * @param {event} e The submit event for initials input
+ */
 function saveScore(e) {
   e.preventDefault();
-  var storedScores = JSON.parse(localStorage.getItem("scoresArray"));
-  
+  var storedScores = getScores();
   if (storedScores !== null) scoresArray = storedScores;
   
   var scoreInfo = {
     initials: initialsInputEl.value.trim(),
     score: userScore
   };
-  
-  scoresArray.push(scoreInfo);
-  localStorage.setItem("scoreInfo", JSON.stringify("scoreInfo"));
+  scoresArray.push(scoreInfo); //add new score to scores array
+  localStorage.setItem('scores', JSON.stringify(scoresArray));
+  scoreSubmitMessage();
+}
+
+// displays the div containing the scoreboard
+function showScoreboard() {
+  hideElement(resultsSectionEl.children[1]);
+  displayElement(resultsSectionEl.children[2]);
+
+  var scores = getScores();
+
+  // display list of scores
+  for ( var score of scores) {
+    scoresListEl.innerHTML += `<li>Initials: ${score.initials} - Score: ${score.score} </li>`;
+  };
 }
 
 // begins multiple choice quiz
 function startQuiz() {
-  hideElement(document.querySelector(".start"));
+  hideElement(document.getElementById('start-section'));
   displayElement(quizSectionEl);
   buildQuestion(qIndex);
   startTimer();
 }
 
 // EVENT LISTENERS
-buttonEl.addEventListener("click", startQuiz);
+buttonEl.addEventListener("click", startQuiz); 
 buttonBoxEl.addEventListener("click", checkAnswer);
 initialsFormEl.addEventListener("submit", saveScore);
+displayScoresButtonEl.addEventListener('click', showScoreboard);
