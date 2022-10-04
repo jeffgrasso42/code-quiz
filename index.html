@@ -39,7 +39,7 @@
         <h4>Your Score: <span id="score">0</span></h4>
         <form id="initials-form" method="post">
           <label for="initials-text">Enter your initials: </label>
-          <input type="text" placeholder="JS" name="initials-text" id="initials-text">
+          <input type="text" placeholder="JS" name="initials-text" id="initials-text" maxlength="3">
         </form>
       </div>
       <div class="submit-message hide">
@@ -48,12 +48,10 @@
       </div>
       <div class="scoreboard hide">
         <ul id="scores-list"></ul>
+        <button id="clear-button">Clear Scores?</button>
       </div>
     </section>
   </main>
-  <footer>
-
-  </footer>
   <script src="./assets/js/questions.js"></script>
   <script src="./assets/js/script.js"></script>
 </body>

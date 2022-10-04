@@ -1,11 +1,9 @@
 // DEPENDENCIES
+
 // qustions.js
-
-// Assignment Code
-
 var timerBoxEl = document.getElementById('timer-box');
 var timerEl = document.getElementById('timer');
-var buttonEl = document.getElementById('start-button');
+var startButtonEl = document.getElementById('start-button');
 var quizSectionEl = document.getElementById('quiz-section');
 var buttonBoxEl = document.querySelector('.button-box');
 var userScoreBoxEl = document.getElementById('user-score');
@@ -15,12 +13,17 @@ var initialsInputEl = document.getElementById('initials-text');
 var resultsSectionEl = document.getElementById('results-section');
 var displayScoresButtonEl = document.getElementById('display-button');
 var scoresListEl = document.getElementById('scores-list');
+var clearButtonEl = document.getElementById('clear-button');
+
+// Assignment Code
+
 var qIndex = 0;
 var timerInterval;
 var secondsLeft = 61;
 var userScore = 0;
 
 // DATA
+
 var scoresArray = [];
 
 // FUNCTIONS
@@ -89,7 +92,9 @@ function scoreSubmitMessage() {
 function getScores() {
   return JSON.parse(localStorage.getItem("scores"));
 }
+
 // USER INTERACTIONS
+
 /**
  * Adds class with 'display: none;' to e.
  * 
@@ -160,16 +165,26 @@ function saveScore(e) {
 }
 
 // displays the div containing the scoreboard
-function showScoreboard() {
+function renderScoreboard() {
   hideElement(resultsSectionEl.children[1]);
   displayElement(resultsSectionEl.children[2]);
 
-  var scores = getScores();
+  var gameRecords = getScores();
 
-  // display list of scores
-  for ( var score of scores) {
-    scoresListEl.innerHTML += `<li>Initials: ${score.initials} - Score: ${score.score} </li>`;
-  };
+  if(gameRecords !== null){
+    // display list of scores
+    for ( var record of gameRecords) {
+      scoresListEl.innerHTML += `<li>Initials: ${record.initials} - Score: ${record.score} </li>`;
+    };
+  } else {
+    scoresListEl.parentElement.innerHTML = `<h4>Scores Cleared</h4>`;
+  }  
+}
+
+// Clears scores from local storage
+function clearScores() {
+  localStorage.clear();
+  renderScoreboard(); // render changes
 }
 
 // begins multiple choice quiz
@@ -180,8 +195,12 @@ function startQuiz() {
   startTimer();
 }
 
+// INITIALIZATION
+
+
 // EVENT LISTENERS
-buttonEl.addEventListener("click", startQuiz); 
+startButtonEl.addEventListener("click", startQuiz); 
 buttonBoxEl.addEventListener("click", checkAnswer);
 initialsFormEl.addEventListener("submit", saveScore);
-displayScoresButtonEl.addEventListener('click', showScoreboard);
+displayScoresButtonEl.addEventListener('click', renderScoreboard);
+clearButtonEl.addEventListener('click', clearScores);

@@ -1,3 +1,4 @@
+/* VARIABLES */
 :root {
   --blue-grey: rgba(43, 45, 54, 1);
   --opaque-blue-grey: rgba(43, 45, 54, 0.9);
@@ -6,6 +7,7 @@
   --white: #ffffff;
 }
 
+/* GENERAL STYLES */
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +15,7 @@
   box-sizing: border-box;
 }
 
+/* BODY STYLES */
 body {
   background-color: var(--white);
 }
@@ -21,6 +24,7 @@ body {
   display: none;
 }
 
+/* HEADER STYLES */
 header {
   display: flex;
   justify-content: space-between;
@@ -54,6 +58,7 @@ header {
   line-height: 100%;
 }
 
+/* MAIN STYLES */
 main {
   max-width: 1000px;
   margin: 0 auto;
@@ -61,6 +66,30 @@ main {
   display: flex;
 }
 
+/* BUTTON STYLES */
+button {
+  font-size: 1.25rem;
+  line-height: 1.3rem;
+  border: 2px solid;
+  border-radius: 5px 10px;
+  background-image: linear-gradient(to left, var(--blue-grey) 10%,  var(--opaque-blue-grey));
+  color: var(--white);
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  box-shadow: inset 0 0 5px var(--grey), 0 0 10px var(--grey);
+  cursor: pointer;
+  font-size: 1.3rem;
+}
+
+#display-button,
+#clear-button {
+  margin-top: 20px;
+  padding: 5px 10px;
+}
+
+/* SECTION STYLES */
 section {
   display: flex;
   flex-direction: column;
@@ -69,6 +98,7 @@ section {
   box-shadow: 0 0 8px var(--light-grey);
 }
 
+/* START SECTION */
 .start {
   align-items: center;
   padding: 10px;
@@ -92,26 +122,12 @@ section {
   margin: auto 0;
 }
 
-button {
-  font-size: 1.25rem;
-  line-height: 1.3rem;
-  border: 2px solid;
-  border-radius: 5px 10px;
-  background-image: linear-gradient(to left, var(--blue-grey) 10%,  var(--opaque-blue-grey));
-  color: var(--white);
-  transition: all 0.3s ease-in-out;
-}
-
-button:hover {
-  box-shadow: inset 0 0 5px var(--grey), 0 0 10px var(--grey);
-  cursor: pointer;
-  font-size: 1.3rem;
-}
+/* QUIZ SECTION */
 .quiz {
   width: 100%;
   align-items: center;
   padding-bottom: 10px;
-
+  
 }
 
 .button-box {
@@ -152,6 +168,7 @@ h3 {
   font-style: italic;
 }
 
+/* RESULTS SECTION */
 .results {
   width: 100%;
   padding: 10px;
@@ -174,11 +191,15 @@ form {
 input {
   text-align: center;
   border: 1px inset var(--white);
-  width: 3vw;
+  width: 4vw;
   font-size: 1.5rem;
   border-radius: 5px;
 }
 
-#display-button {
-  padding: 5px 10px;
+
+.scoreboard ul {
+  margin: 0 auto;
+  font-size: 1.5rem;
+  text-align: start;
+  list-style: none;
 }
