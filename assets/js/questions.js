@@ -7,7 +7,7 @@ var questions = [
       'C) &lt;script&gt;', 
       'D) &lt;javascript&gt;'
     ],
-    correct: 'C) <script>'
+    correct: 'C) <script>' //eagle brackets match the innerHTML of choices[2]
   },
   {
     text: 'What is the correct syntax for referromg tp an external script called "script.js"',
@@ -16,7 +16,7 @@ var questions = [
       'B) &ltscript name="script.js"&gt;', 
       'C) &ltscript href="script.js"&gt;',
       'C) &ltscript href="script.js"&gt;'],
-    correct: 'A) &ltscript src="script.js"&gt;'
+    correct: 'A) <script src="script.js">' //eagle brackets match innerHTML of choices[0]
   },
   {
     text: "3) What is the correct JavaScript syntax to change the content of the HTML element below?",
@@ -26,11 +26,11 @@ var questions = [
       'C) document.getElementById("demo").innerHTML = "Hello World!";', 
       'D) document.getElementByName("p").innerHTML = "Hello World!";'
     ],
-    correct: 'B) #demo.innerHTML = "Hello World!";'
+    correct: 'C) document.getElementById("demo").innerHTML = "Hello World!";'
   },
   {
-    text: "question 3",
-    choices: ["a", "b", "c", "d"],
-    correct: "c"
+    text: "4) True or False: The external JavaScript file must contain the &lt;script&gt; tag",
+    choices: ['True', 'False'],
+    correct: "False"
   }
 ]

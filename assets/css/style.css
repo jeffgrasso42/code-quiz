@@ -72,12 +72,18 @@ section {
 .start {
   align-items: center;
   padding: 10px;
+  margin: 0 auto;
+  width: 100%;
 }
 
-.start p {
+.start ul {
   margin: 0 auto;
-  width: 90%;
-  
+  width: 80%;
+  text-align: center;
+  list-style: none;
+}
+.start li {
+  margin: 1rem 0;
 }
 
 .start button {
@@ -109,6 +115,7 @@ button:hover {
 }
 
 .button-box {
+  position: relative;
   width: 100%;
   display: flex;
   flex-wrap: nowrap;
@@ -132,6 +139,17 @@ h3 {
   height: 3rem;
   text-align: start;
   padding: 5px 30px;
+}
+
+.button-box::after {
+  content: attr(data-message);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0 60px -50px 0;
+  color: var(--blue-grey);
+  font-size: 1.25rem;
+  font-style: italic;
 }
 
 .results {

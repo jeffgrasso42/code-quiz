@@ -18,28 +18,38 @@
   <main>
     <section class="start">
       <h3>Welcome to the Beginner JavaScript Coding Quiz</h3>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus at recusandae commodi corporis est dicta, laboriosam voluptate minima expedita optio! Repellendus, vel facilis reiciendis molestias tempora labore odit adipisci alias.
-      Atque error tempore qui explicabo? Dolorum iusto suscipit reprehenderit et eveniet voluptates, delectus laborum aperiam harum necessitatibus magni beatae, adipisci, nisi repellendus quasi nostrum quae. Illum exercitationem placeat blanditiis quisquam.
-      Aliquid optio corporis reiciendis deserunt cupiditate non mollitia, excepturi omnis ad? Quasi est repellat illum fuga? Eligendi vel blanditiis nobis recusandae tenetur mollitia culpa enim nulla. Eligendi in nobis fugiat!</p>
+      <ul>
+        <li>
+          This application was created to help JavaScript newcomers reviw some of the basics of the language.
+        </li>
+        <li>
+          The quiz features both multiple choice questions and true or false questions.
+        </li>
+        <li>The quiz has a 60 second time limit, incorrect answers reduce the remaining time by 5 seconds</li>
+        <li>Click start to begin the quiz</li>
+      </ul>
       <button id="start-button">Start</button>
     </section>
     <section class="quiz hide">
       <h3 id="question-text"></h3>
-      <div class="button-box">
-      </div>
+      <div class="button-box" data-message=""></div>
     </section>
     <section class="results hide">
       <div class="user-score">
         <h4>Your Score: <span id="score">0</span></h4>
-        <form id="user-initials" method="post">
+        <form id="initials-form" method="post">
           <label for="initials-text">Enter your initials: </label>
           <input type="text" placeholder="JS" name="initials-text" id="initials-text">
         </form>
       </div>
       <div class="scores hide">
-        <ul id="scores-list">
-
-        </ul>
+        <div class="submit-message">
+          <h4>Score Submitted</h4>
+          <button>See Scores</button>
+        </div>
+        <div class="scoreboard">
+          <ul id="scores-list"></ul>
+        </div>
       </div>
 
     </section>
