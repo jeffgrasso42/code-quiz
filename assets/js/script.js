@@ -52,6 +52,7 @@ function buildQuestion (qIndex) {
     showResults();
   }
 }
+
 // starts the timer for the quiz
 function startTimer () {
   timerBoxEl.classList.remove("invisible") //makes timer visible
@@ -80,20 +81,25 @@ function showResults() {
   renderScore();
 }
 
+// display user score on page
 function renderScore() {
   userScoreEl.innerHTML = userScore;
 }
 
+// displays submit message
 function scoreSubmitMessage() {
   hideElement(resultsSectionEl.children[0]);
   displayElement(resultsSectionEl.children[1]);
 }
 
+/**
+ * Converts JSON string to array of JavaScript objects
+ * 
+ * @returns the array of JavaScript object 
+ */
 function getScores() {
   return JSON.parse(localStorage.getItem("scores"));
 }
-
-// USER INTERACTIONS
 
 /**
  * Adds class with 'display: none;' to e.
@@ -195,12 +201,14 @@ function startQuiz() {
   startTimer();
 }
 
-// INITIALIZATION
-
-
-// EVENT LISTENERS
+// USER INTERACTIONS
+// a user clicks Start...
 startButtonEl.addEventListener("click", startQuiz); 
+// a user clicks on an answer...
 buttonBoxEl.addEventListener("click", checkAnswer);
+// a user submits their initials...
 initialsFormEl.addEventListener("submit", saveScore);
+// a user clicks Display Scores...
 displayScoresButtonEl.addEventListener('click', renderScoreboard);
+// a user clicks Clear Scores...
 clearButtonEl.addEventListener('click', clearScores);
